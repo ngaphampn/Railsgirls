@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Bingos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Picture</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bingos.each do |bingo| %>
+      <tr>
+        <td><%= bingo.name %></td>
+        <td><%= bingo.description %></td>
+        <td><%= bingo.picture %></td>
+        <td><%= link_to 'Show', bingo %></td>
+        <td><%= link_to 'Edit', edit_bingo_path(bingo) %></td>
+        <td><%= link_to 'Destroy', bingo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bingo', new_bingo_path %>

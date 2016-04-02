@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bingo.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @bingo.description %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @bingo.picture %>
+</p>
+
+<%= link_to 'Edit', edit_bingo_path(@bingo) %> |
+<%= link_to 'Back', bingos_path %>
