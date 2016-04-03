@@ -1,19 +1,21 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @idea.name %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @idea.description %>
-</p>
+<div class="row">
+  <div class="col-md-9">
+    <%= image_tag(@idea.picture_url(:thumb)) if @idea.picture.present? %>
+  </div>
 
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag(@idea.picture_url, :width => 600) if @idea.picture.present? %>
-  <h3>Comments</h3>
+  <div class="col-md-3">
+    <p><b>Name: </b><%= @idea.name %></p>
+    <p><b>Description: </b><%= @idea.description %></p>
+    <p>
+      <%= link_to 'Edit', edit_idea_path(@idea), class: "btn btn-info" %> |
+      <%= link_to 'Delete', @idea, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger" %> |
+      <%= link_to 'Back', ideas_path, class: "btn btn-success" %>
+    </p>
+  </div>
+</div>
+<h3>Comments</h3>
 <% @comments.each do |comment| %>
   <div>
     <strong><%= comment.user_name %></strong>
@@ -23,7 +25,3 @@
   </div>
 <% end %>
 <%= render 'comments/form' %>
-</p>
-
-<%= link_to 'Edit', edit_idea_path(@idea) %> |
-<%= link_to 'Back', ideas_path %>
